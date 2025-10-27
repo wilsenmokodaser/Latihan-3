@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Sederhana dengan Animasi</title>
+
+    <style>
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+
+      /* HEADER */
+      header {
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* NAVIGASI */
+      nav {
+        background-color: #333;
+        overflow: hidden;
+      }
+
+      nav a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      nav a:hover {
+        background-color: #575757;
+      }
+
+      /* LAYOUT */
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 20px;
+      }
+
+      .content {
+        flex: 3;
+        background-color: white;
+        padding: 20px;
+        margin-right: 20px;
+        min-width: 250px;
+      }
+
+      .sidebar {
+        flex: 1;
+        background-color: #ddd;
+        padding: 20px;
+        min-width: 200px;
+        transition: transform 0.3s;
+      }
+
+      .sidebar:hover {
+        transform: scale(1.03);
+      }
+
+      /* TABEL */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f0f0f0;
+      }
+
+      /* FORM */
+      form {
+        margin-top: 10px;
+      }
+
+      fieldset {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 10px;
+      }
+
+      legend {
+        font-weight: bold;
+      }
+
+      /* tombol animasi */
+      .btn-anim {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background-color 0.5s, transform 0.3s;
+      }
+
+      .btn-anim:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+      }
+
+      /* FOOTER */
+      footer {
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin-top: 20px;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 600px) {
+        nav a {
+          float: none;
+          width: 100%;
+          text-align: left;
+        }
+
+        .container {
+          flex-direction: column;
+        }
+
+        .content {
+          margin-right: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="fade-in">
+      <h1>KELAS WEB DESIGN PROJECT UJIAN MID SEMESTER</h1>
+      <p>Memuat gabungan antara HTML, CSS, dan JavaScript</p>
+    </header>
+
+    <!-- NAVIGASI -->
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#tentang">Tentang</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+
+    <!-- KONTEN UTAMA + SIDEBAR -->
+    <div class="container">
+      <div class="content">
+        <h2 id="home">Konten Utama</h2>
+        <p>Selamat datang di website untuk belajar Web Design yang menggabungkan HTML, CSS, dan JavaScript.</p>
+        <br />
+
+        <!-- Gambar -->
+        <img src="unklab.jpg" alt="Contoh Gambar" width="100%" />
+        <br /><br />
+
+        <!-- Tabel -->
+        <h3>Tabel Data</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Kota</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Andi</td>
+              <td>Jakarta</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Budi</td>
+              <td>Bandung</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Wilsen</td>
+              <td>Manado</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+
+        <!-- Form -->
+        <h3 id="kontak">Formulir</h3>
+        <form id="formPendaftaran">
+          <fieldset>
+            <legend>Formulir Pendaftaran</legend>
+            <label for="nama">Nama:</label><br />
+            <input type="text" id="nama" name="nama" /><br /><br />
+
+            <label for="email">Email:</label><br />
+            <input type="email" id="email" name="email" /><br /><br />
+
+            <label for="kota">Pilih Kota:</label><br />
+            <select id="kota" name="kota">
+              <option value="jakarta">Jakarta</option>
+              <option value="bandung">Bandung</option>
+              <option value="surabaya">Surabaya</option>
+            </select>
+            <br /><br />
+
+            <label>
+              <input type="checkbox" id="checkSyarat" name="syarat" />
+              Saya setuju dengan syarat & ketentuan
+            </label>
+            <br /><br />
+
+            <button type="submit" class="btn-anim" id="btnKirim">Kirim</button>
+          </fieldset>
+        </form>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <h3 id="tentang">Tentang Website</h3>
+        <p>Website ini adalah contoh latihan HTML + CSS responsif sederhana dengan animasi dan JavaScript interaktif.</p>
+        <br />
+
+        <h4>Menu Sidebar</h4>
+        <ul class="sidebar-menu">
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+          <li><a href="#formulir">Formulir</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2025 Website Latihan</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      // Event tombol Kirim
+      document.getElementById("btnKirim").addEventListener("click", function (event) {
+        event.preventDefault(); // mencegah form langsung terkirim
+        let konfirmasi = confirm("Apakah kamu yakin untuk menyimpan file ini?");
+        if (konfirmasi) {
+          alert("Data berhasil dikirim.");
+        } else {
+          alert("Pengiriman dibatalkan.");
+        }
+      });
+
+      // Event saat checkbox dicentang
+      document.getElementById("checkSyarat").addEventListener("click", function () {
+        alert("Pastikan semua bagian telah terisi");
+      });
+    </script>
+  </body>
+</html>
