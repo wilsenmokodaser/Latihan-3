@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Button Example</title>
+    <style>
+      /* Styling tombol agar menarik dan responsif */
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      /* Efek hover */
+      button:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+
+      /* Responsif di layar kecil */
+      @media (max-width: 600px) {
+        button {
+          width: 100%;
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Contoh Responsive Button dengan JavaScript Event</h2>
+
+    <!-- Tombol dengan teks dan ikon -->
+    <button id="tombolAksi">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="icon" width="20" style="vertical-align: middle; margin-right: 8px" />
+      Klik Saya!
+    </button>
+
+    <p id="pesan"></p>
+
+    <script>
+      // 1. Pilih kontrol (button)
+      const tombol = document.getElementById("tombolAksi");
+
+      // 2. Buat fungsi yang akan dijalankan saat event terjadi
+      function tampilkanPesan() {
+        document.getElementById("pesan").textContent = "Tombol telah diklik! 🎉";
+      }
+
+      // 3. Lampirkan fungsi ke event 'click' pada tombol
+      tombol.addEventListener("click", tampilkanPesan);
+    </script>
+  </body>
+</html>

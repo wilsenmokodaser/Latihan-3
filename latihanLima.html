@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Penyimpanan Local Storage</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f0f0f0;
+        padding: 20px;
+      }
+      h2 {
+        color: #333;
+      }
+      form {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #hasil {
+        margin-top: 20px;
+        padding: 15px;
+        background: #e9ffe9;
+        border-left: 5px solid #28a745;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Formulir Data Pengguna</h2>
+    <form id="formUser">
+      <label>Nama:</label>
+      <input type="text" id="nama" required />
+
+      <label>Email:</label>
+      <input type="email" id="email" required />
+
+      <label>Pesan:</label>
+      <textarea id="pesan" rows="3" required></textarea>
+
+      <button type="submit">Simpan Data</button>
+    </form>
+
+    <div id="hasil"></div>
+
+    <script>
+      // Ambil referensi elemen
+      const form = document.getElementById("formUser");
+      const hasil = document.getElementById("hasil");
+
+      // Event ketika form disubmit
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Supaya tidak reload halaman
+
+        // Ambil nilai input
+        const nama = document.getElementById("nama").value;
+        const email = document.getElementById("email").value;
+        const pesan = document.getElementById("pesan").value;
+
+        // Simpan ke localStorage
+        const dataUser = { nama, email, pesan };
+        localStorage.setItem("dataUser", JSON.stringify(dataUser));
+
+        // Tampilkan hasil
+        tampilkanData();
+      });
+
+      // Fungsi untuk menampilkan data dari localStorage
+      function tampilkanData() {
+        const data = localStorage.getItem("dataUser");
+        if (data) {
+          const user = JSON.parse(data);
+          hasil.innerHTML = `
+          <h3>Data Tersimpan:</h3>
+          <p><strong>Nama:</strong> ${user.nama}</p>
+          <p><strong>Email:</strong> ${user.email}</p>
+          <p><strong>Pesan:</strong> ${user.pesan}</p>
+        `;
+        }
+      }
+
+      // Tampilkan data saat halaman dibuka ulang
+      window.onload = tampilkanData;
+    </script>
+  </body>
+</html>

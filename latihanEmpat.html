@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoh Popup OK / Cancel</title>
+    <style>
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #hasil {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Contoh Popup Box dengan OK / Cancel</h2>
+
+    <button onclick="konfirmasi()">Klik untuk Konfirmasi</button>
+    <button onclick="tombol2()">Reset</button>
+    <p id="hasil"></p>
+    <script>
+      function tombol2() {
+        document.getElementById("judul").innerHTML = "Selamat Datang di JavaScript!";
+      }
+    </script>
+
+    <script>
+      function konfirmasi() {
+        let jawaban = confirm("Apakah Anda yakin ingin melanjutkan?");
+        if (jawaban === true) {
+          document.getElementById("hasil").textContent = "Anda menekan OK! ✅";
+        } else {
+          document.getElementById("hasil").textContent = "Anda menekan Cancel! ❌";
+        }
+      }
+    </script>
+  </body>
+</html>
